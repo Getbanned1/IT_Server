@@ -35,6 +35,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -85,32 +86,44 @@
             // button1
             // 
             button1.BackColor = SystemColors.ActiveBorder;
-            button1.Location = new Point(34, 77);
+            button1.Location = new Point(12, 77);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(122, 23);
             button1.TabIndex = 4;
             button1.Text = "Добавить";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
             button2.BackColor = SystemColors.ActiveBorder;
-            button2.Location = new Point(34, 137);
+            button2.Location = new Point(12, 137);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(122, 23);
             button2.TabIndex = 5;
             button2.Text = "Удалить";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
             button3.BackColor = SystemColors.ActiveBorder;
-            button3.Location = new Point(34, 180);
+            button3.Location = new Point(12, 203);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(122, 23);
             button3.TabIndex = 6;
             button3.Text = "Изменить";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 38);
+            label1.Name = "label1";
+            label1.Size = new Size(339, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Информационная система для упраления инвентаризацией";
             // 
             // Form1
             // 
@@ -118,6 +131,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(584, 361);
+            Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -129,7 +143,7 @@
             MaximumSize = new Size(600, 400);
             MinimumSize = new Size(600, 400);
             Name = "Form1";
-            Text = "Form1";
+            Text = "IT-Server";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -144,5 +158,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Label label1;
     }
 }
