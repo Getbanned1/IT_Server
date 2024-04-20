@@ -118,12 +118,12 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 38);
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 12);
             label1.Name = "label1";
-            label1.Size = new Size(339, 15);
+            label1.Size = new Size(227, 42);
             label1.TabIndex = 7;
-            label1.Text = "Информационная система для упраления инвентаризацией";
+            label1.Text = "Информационная система для упраления Инвентаризацией";
             // 
             // Form1
             // 
