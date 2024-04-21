@@ -22,8 +22,8 @@ namespace It_Server
             m_sqlCmd = new SQLiteCommand();
             dbFileName = "";
             //dbFileName = "D:\\MyDatabase.db";
-            if (!File.Exists(dbFileName))
-                MessageBox.Show("Please, create DB and blank table (Push \"Create\" button))");
+            //if (!File.Exists(dbFileName))
+            //    MessageBox.Show("Please, create DB and blank table (Push \"Create\" button))");
             try
             {
                 m_dbConn = new SQLiteConnection(@"Data Source=C:\Users\79616\source\repos\It_Server\It_Server\It-Server.db");
@@ -34,15 +34,20 @@ namespace It_Server
             }
             catch (SQLiteException ex)
             {
-                lbStatusText.Text = "DisConnected";
+                lbStatusText.Text = "Disconnected";
 
                 MessageBox.Show("Error: " + ex.Message);
             }
-            DbClass db = new DbClass();
-            db.AppendDataForDB();
+            //DbClass db = new DbClass();
+            //db.AppendDataForDB();
 
             m_dbConn.Close();
-
+            DataTable dt = new DataTable();
+            using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn))
+            {
+                ad.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
         }
 
 

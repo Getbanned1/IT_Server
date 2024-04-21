@@ -41,7 +41,7 @@ namespace It_Server
                 {
                     using (SQLiteConnection connection = new SQLiteConnection("Data Source=C:\\Users\\79616\\source\\repos\\It_Server\\It_Server\\It-Server.db"))
                     {
-                        DataTable dt = new DataTable();
+                        
                         connection.Open();
                         for (int i = 0; i <= 200; i++)
                         {
@@ -51,11 +51,7 @@ namespace It_Server
                                 command.CommandText = CommandText;
                                 command.Connection = connection;
                                 //command.ExecuteNonQuery();
-                                using(SQLiteDataAdapter ad = new SQLiteDataAdapter(command))
-                                {
-                                    ad.Fill(dt);
-                                    dataGridView1.DataSource = dt;
-                                }
+                                
                             }
                         using (SQLiteCommand command = connection.CreateCommand())
                         {
@@ -63,11 +59,7 @@ namespace It_Server
                             command.CommandText = CommandText;
                             command.Connection = connection;
                             //command.ExecuteNonQuery();
-                            using (SQLiteDataAdapter ad = new SQLiteDataAdapter(command))
-                            {
-                                ad.Fill(dt);
-                                dataGridView1.DataSource = dt;
-                            }
+                            
                         }
                     }                                 
                         
