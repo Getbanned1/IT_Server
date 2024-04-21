@@ -6,8 +6,8 @@ namespace It_Server
 {
     public partial class Form1 : Form
     {
-        private string dbFileName;
-        private SQLiteConnection m_dbConn;
+        protected string dbFileName;
+        protected SQLiteConnection m_dbConn;
         private SQLiteCommand m_sqlCmd;
         public Form1()
         {
@@ -20,13 +20,13 @@ namespace It_Server
 
             m_dbConn = new SQLiteConnection();
             m_sqlCmd = new SQLiteCommand();
-            dbFileName = "C:\\Users\\79616\\source\\repos\\It_Server\\It_Server\\DB Browser for SQLite\\It-Server.db";
+            dbFileName = "";
             //dbFileName = "D:\\MyDatabase.db";
             if (!File.Exists(dbFileName))
                 MessageBox.Show("Please, create DB and blank table (Push \"Create\" button))");
             try
             {
-                m_dbConn = new SQLiteConnection("Data Source=" + dbFileName);
+                m_dbConn = new SQLiteConnection(@"Data Source=C:\Users\79616\source\repos\It_Server\It_Server\It-Server.db");
                 m_dbConn.Open();
                 m_sqlCmd.Connection = m_dbConn;
                 lbStatusText.Text = "Connected";
@@ -39,11 +39,7 @@ namespace It_Server
                 MessageBox.Show("Error: " + ex.Message);
             }
             DbClass db = new DbClass();
-            DataTable dt = new DataTable();
-            SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn);
             db.AppendDataForDB();
-            ad.Fill(dt);
-            dataGridView1.DataSource = dt;
 
             m_dbConn.Close();
 
@@ -67,7 +63,8 @@ namespace It_Server
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            DbClass db = new DbClass();
+            db.AppendDataForDB();
         }
 
         private void button3_Click(object sender, EventArgs e)

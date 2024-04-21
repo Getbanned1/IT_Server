@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -10,9 +11,8 @@ namespace It_Server
 {
     internal class DbClass : Form1
     {
-        private string dbFileName;
-        private SQLiteConnection m_dbConn;
-        SQLiteCommand com = new SQLiteCommand();
+        
+        
         string path = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Фамилии.txt";
         string path2 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Имена женские.txt";
         string path3 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Имена мужские.txt";
@@ -22,7 +22,8 @@ namespace It_Server
         string path7 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Список отделов.txt";
         
 
-
+        Random rand = new Random();
+        
 
         public void AppendDataForDB()
         {
@@ -30,37 +31,63 @@ namespace It_Server
             var FNames = ReadDataForDB(path2);
             var MNames = ReadDataForDB(path3);
             var FPatronymic = ReadDataForDB(path4);
-            var VPatronymic = ReadDataForDB(path5);
+            var MPatronymic = ReadDataForDB(path5);
             var Equipment = ReadDataForDB(path6);
             var Department = ReadDataForDB(path7);
 
             Random rand = new Random();
-            for(int i = 0; i<=10;i++)
-            {
+            
                 try
                 {
-                    
-                    com.CommandText = "INSERT INTO Data2 (Name,Surname,Patronymic,Equipment,Department) VALUES('{FNames},{Surnames},{MNames},{Equipment},{Department}')";
-                    com.Parameters.AddWithValue("Name", MNames);
-                    //MessageBox.Show(m_sqlCmd.ExecuteNonQuery().ToString());
+                    using (SQLiteConnection connection = new SQLiteConnection("Data Source=C:\\Users\\79616\\source\\repos\\It_Server\\It_Server\\It-Server.db"))
+                    {
+                        DataTable dt = new DataTable();
+                        connection.Open();
+                        for (int i = 0; i <= 200; i++)
+                        {
+                            using(SQLiteCommand command = connection.CreateCommand())
+                            { 
+                                string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department) VALUES('" + FNames[rand.Next(FNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + FPatronymic[rand.Next(FPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "')";
+                                command.CommandText = CommandText;
+                                command.Connection = connection;
+                                //command.ExecuteNonQuery();
+                                using(SQLiteDataAdapter ad = new SQLiteDataAdapter(command))
+                                {
+                                    ad.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
+                            }
+                        using (SQLiteCommand command = connection.CreateCommand())
+                        {
+                            string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department) VALUES('" + MNames[rand.Next(MNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + MPatronymic[rand.Next(MPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "')";
+                            command.CommandText = CommandText;
+                            command.Connection = connection;
+                            //command.ExecuteNonQuery();
+                            using (SQLiteDataAdapter ad = new SQLiteDataAdapter(command))
+                            {
+                                ad.Fill(dt);
+                                dataGridView1.DataSource = dt;
+                            }
+                        }
+                    }                                 
+                        
+                    }
                 }
                 catch (SQLiteException ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Errors: " + ex.Message);
                 }
 
-            }
+            
             
         }
 
         private List<string> ReadDataForDB(string path)
         {
             using (StreamReader reader = new StreamReader(path))
-            {
-                string text = reader.ReadLine();
-                List<string> list = new List<string>();
-                list.Add(text);
-                return list;
+            {   
+                List<string> lines = File.ReadAllLines(path).ToList();
+                return lines;
             }
 
         }
