@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             dataAdd = new Label();
+            textBox1 = new TextBox();
+            buttondel = new Button();
             SuspendLayout();
             // 
             // dataAdd
@@ -41,22 +43,44 @@
             dataAdd.TabIndex = 8;
             dataAdd.Text = "Введите данные для удаления(Имя Фамилия Отчество и тд.)";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(28, 50);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(337, 23);
+            textBox1.TabIndex = 9;
+            // 
+            // buttondel
+            // 
+            buttondel.BackColor = Color.Silver;
+            buttondel.ForeColor = SystemColors.ActiveCaptionText;
+            buttondel.Location = new Point(280, 326);
+            buttondel.Name = "buttondel";
+            buttondel.Size = new Size(85, 23);
+            buttondel.TabIndex = 10;
+            buttondel.Text = "Применить";
+            buttondel.UseVisualStyleBackColor = false;
+            buttondel.Click += buttondel_Click;
+            // 
             // Delete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(384, 361);
+            Controls.Add(buttondel);
+            Controls.Add(textBox1);
             Controls.Add(dataAdd);
             Name = "Delete";
             Text = "Удаление";
             Load += Form3_Load;
-            Controls.SetChildIndex(dataAdd, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label dataAdd;
+        private TextBox textBox1;
+        private Button buttondel;
     }
 }

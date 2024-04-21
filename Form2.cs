@@ -14,6 +14,7 @@ namespace It_Server
 {
     public partial class Add : Form
     {
+
         public Add()
         {
             InitializeComponent();
@@ -25,16 +26,31 @@ namespace It_Server
         }
         private void AddData()
         {
+            SQLiteConnection m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            SQLiteCommand m_sqlCmd = new SQLiteCommand();
+            m_sqlCmd.Connection = m_dbConn;
             Random randomid = new Random();
-            using (SQLiteCommand com = new SQLiteCommand("Insert INTO Data Name=@Name or Surname=@Surname or Patronymic=@Patronymic or Equipment=@Equipment or Department=@Department or ItemID=@ItemID or Condition=@Condition"))
+            using (DataTable dt = new DataTable())
             {
-                com.Parameters.AddWithValue("Name", textBox1.Text.ToString());
-                com.Parameters.AddWithValue("Surname", textBox2.Text.ToString());
-                com.Parameters.AddWithValue("Patronymic", textBox3.Text.ToString());
-                com.Parameters.AddWithValue("Equipment", textBox4.Text.ToString());
-                com.Parameters.AddWithValue("Department", textBox5.Text.ToString());
-                com.Parameters.AddWithValue("ItemID", "93" + randomid.Next(100000, 999999).ToString());
-                com.Parameters.AddWithValue("Condition", textBox6.Text.ToString());
+                using (SQLiteCommand com = new SQLiteCommand("Insert INTO Data(Name, Surname, Patronymic, Equipment, Department, ItemID, Condition)VALUES(?, ?, ?, ?, ?, ?, ?)", m_dbConn))
+                {
+                    m_dbConn.Open();
+                    com.Parameters.AddWithValue("@Name", textBox1.Text.ToString());
+                    com.Parameters.AddWithValue("@Surname", textBox2.Text.ToString());
+                    com.Parameters.AddWithValue("@Patronymic", textBox3.Text.ToString());
+                    com.Parameters.AddWithValue("@Equipment", textBox4.Text.ToString());
+                    com.Parameters.AddWithValue("@Department", textBox5.Text.ToString());
+                    com.Parameters.AddWithValue("@ItemID", "93" + randomid.Next(100000, 999999).ToString());
+                    com.Parameters.AddWithValue("@Condition", textBox6.Text.ToString());
+                    using (SQLiteDataAdapter ad = new SQLiteDataAdapter(com))
+                    {
+                        com.Connection = m_dbConn;
+                        ad.Fill(dt);
+
+                    }
+                    m_dbConn.Close();
+                }
+           
             }
         }
     }
