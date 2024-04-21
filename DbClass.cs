@@ -34,33 +34,36 @@ namespace It_Server
             var MPatronymic = ReadDataForDB(path5);
             var Equipment = ReadDataForDB(path6);
             var Department = ReadDataForDB(path7);
+            List<string> conditions = ["Списано", "Не Списано"];
 
             Random rand = new Random();
-            
+            Random randomid = new Random();
                 try
                 {
-                    using (SQLiteConnection connection = new SQLiteConnection("Data Source=C:\\Users\\79616\\source\\repos\\It_Server\\It_Server\\It-Server.db"))
+                    using (SQLiteConnection connection = new SQLiteConnection("Data Source=It-Server.db"))
                     {
                         
-                        connection.Open();
+                        
                         for (int i = 0; i <= 200; i++)
                         {
                             using(SQLiteCommand command = connection.CreateCommand())
-                            { 
-                                string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department) VALUES('" + FNames[rand.Next(FNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + FPatronymic[rand.Next(FPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "')";
+                            {
+                                connection.Open();
+                                string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department,ItemID,Condition) VALUES('" + FNames[rand.Next(FNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + FPatronymic[rand.Next(FPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "','"+"93"+randomid.Next(100000,999999).ToString() +"','"+ conditions[rand.Next(conditions.Count)] +"')";
                                 command.CommandText = CommandText;
                                 command.Connection = connection;
-                                //command.ExecuteNonQuery();
+                                command.ExecuteNonQuery();
                                 
                             }
                         using (SQLiteCommand command = connection.CreateCommand())
                         {
-                            string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department) VALUES('" + MNames[rand.Next(MNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + MPatronymic[rand.Next(MPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "')";
+                            string CommandText = "INSERT INTO Data (Name,Surname,Patronymic,Equipment,Department,ItemID,Condition) VALUES('" + MNames[rand.Next(MNames.Count)] + "','" + Surnames[rand.Next(Surnames.Count)] + "','" + MPatronymic[rand.Next(MPatronymic.Count)] + "','" + Equipment[rand.Next(Equipment.Count)] + "','" + Department[rand.Next(Department.Count)] + "','"+"93"+randomid.Next(100000,999999).ToString() + "','" + conditions[rand.Next(conditions.Count)] + "')";
                             command.CommandText = CommandText;
                             command.Connection = connection;
-                            //command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
                             
                         }
+                        connection.Close();
                     }                                 
                         
                     }

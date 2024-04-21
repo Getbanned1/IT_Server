@@ -33,7 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             form1BindingSource = new BindingSource(components);
-            Search = new ComboBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
             button1 = new Button();
@@ -44,6 +43,8 @@
             form1BindingSource1 = new BindingSource(components);
             bindingSource1 = new BindingSource(components);
             bindingSourceBindingSource = new BindingSource(components);
+            button4 = new Button();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)form1BindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)form1BindingSource1).BeginInit();
@@ -63,8 +64,8 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlDark;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.BackgroundColor = SystemColors.ActiveBorder;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+            dataGridView1.BackgroundColor = Color.Silver;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ActiveBorder;
@@ -77,51 +78,43 @@
             dataGridView1.Location = new Point(140, 77);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(432, 262);
+            dataGridView1.Size = new Size(732, 262);
             dataGridView1.TabIndex = 0;
             // 
             // form1BindingSource
             // 
             form1BindingSource.DataSource = typeof(Form1);
             // 
-            // Search
-            // 
-            Search.BackColor = SystemColors.ActiveBorder;
-            Search.ForeColor = SystemColors.ControlLightLight;
-            Search.FormattingEnabled = true;
-            Search.Location = new Point(332, 12);
-            Search.Name = "Search";
-            Search.Size = new Size(240, 23);
-            Search.TabIndex = 1;
-            Search.Text = "Поиск по управляющим отделам";
-            Search.SelectedIndexChanged += Search_SelectedIndexChanged;
-            Search.Click += Search_Click;
-            // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.BackColor = SystemColors.ControlDarkDark;
-            checkBox1.Location = new Point(400, 52);
+            checkBox1.BackColor = Color.Silver;
+            checkBox1.ForeColor = SystemColors.WindowText;
+            checkBox1.Location = new Point(710, 52);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(74, 19);
             checkBox1.TabIndex = 2;
             checkBox1.Text = "Списано";
             checkBox1.UseVisualStyleBackColor = false;
+            checkBox1.CheckStateChanged += Check;
             // 
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.BackColor = SystemColors.ControlDarkDark;
-            checkBox2.Location = new Point(489, 52);
+            checkBox2.BackColor = Color.Silver;
+            checkBox2.ForeColor = SystemColors.WindowText;
+            checkBox2.Location = new Point(780, 52);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(92, 19);
             checkBox2.TabIndex = 3;
             checkBox2.Text = "Не Списано";
             checkBox2.UseVisualStyleBackColor = false;
+            checkBox2.CheckStateChanged += Check;
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ActiveBorder;
+            button1.BackColor = Color.Silver;
+            button1.ForeColor = SystemColors.WindowText;
             button1.Location = new Point(12, 77);
             button1.Name = "button1";
             button1.Size = new Size(122, 23);
@@ -132,7 +125,8 @@
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.ActiveBorder;
+            button2.BackColor = Color.Silver;
+            button2.ForeColor = SystemColors.WindowText;
             button2.Location = new Point(12, 137);
             button2.Name = "button2";
             button2.Size = new Size(122, 23);
@@ -143,7 +137,8 @@
             // 
             // button3
             // 
-            button3.BackColor = SystemColors.ActiveBorder;
+            button3.BackColor = Color.Silver;
+            button3.ForeColor = SystemColors.WindowText;
             button3.Location = new Point(12, 203);
             button3.Name = "button3";
             button3.Size = new Size(122, 23);
@@ -154,7 +149,9 @@
             // 
             // label1
             // 
+            label1.BackColor = Color.DimGray;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(12, 12);
             label1.Name = "label1";
             label1.Size = new Size(227, 42);
@@ -164,11 +161,11 @@
             // lbStatusText
             // 
             lbStatusText.AutoSize = true;
-            lbStatusText.Location = new Point(35, 284);
+            lbStatusText.Location = new Point(12, 324);
             lbStatusText.Name = "lbStatusText";
-            lbStatusText.Size = new Size(38, 15);
+            lbStatusText.Size = new Size(121, 15);
             lbStatusText.TabIndex = 8;
-            lbStatusText.Text = "label2";
+            lbStatusText.Text = "Подключение к сети";
             // 
             // form1BindingSource1
             // 
@@ -178,12 +175,37 @@
             // 
             bindingSourceBindingSource.DataSource = typeof(BindingSource);
             // 
+            // button4
+            // 
+            button4.BackColor = Color.Silver;
+            button4.ForeColor = SystemColors.WindowText;
+            button4.Location = new Point(804, 12);
+            button4.Name = "button4";
+            button4.Size = new Size(68, 23);
+            button4.TabIndex = 10;
+            button4.Text = "Поиск";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = Color.Silver;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(584, 13);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(214, 23);
+            comboBox1.TabIndex = 11;
+            comboBox1.Text = "Поиск по управляющим отделам";
+            comboBox1.Click += SearchClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(584, 361);
+            BackColor = Color.DimGray;
+            ClientSize = new Size(884, 361);
+            Controls.Add(comboBox1);
+            Controls.Add(button4);
             Controls.Add(lbStatusText);
             Controls.Add(label1);
             Controls.Add(button3);
@@ -191,11 +213,10 @@
             Controls.Add(button1);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
-            Controls.Add(Search);
             Controls.Add(dataGridView1);
             ForeColor = SystemColors.ControlLightLight;
-            MaximumSize = new Size(600, 400);
-            MinimumSize = new Size(600, 400);
+            MaximumSize = new Size(900, 400);
+            MinimumSize = new Size(900, 400);
             Name = "Form1";
             Text = "IT-Server";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -208,7 +229,6 @@
         }
 
         #endregion
-        private ComboBox Search;
         private CheckBox checkBox1;
         private CheckBox checkBox2;
         private Button button1;
@@ -221,5 +241,7 @@
         public BindingSource bindingSource1;
         public DataGridView dataGridView1;
         private BindingSource bindingSourceBindingSource;
+        private Button button4;
+        private ComboBox comboBox1;
     }
 }

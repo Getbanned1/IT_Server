@@ -18,8 +18,6 @@ namespace It_Server
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
-            Form1 form = new Form1();
-            form.DbConnect();
         }
 
 
