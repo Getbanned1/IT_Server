@@ -28,36 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
             SuspendLayout();
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Silver;
-            button2.ForeColor = SystemColors.ControlDarkDark;
-            button2.Location = new Point(287, 126);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 23);
-            button2.TabIndex = 6;
-            button2.Text = "Применить";
-            button2.UseVisualStyleBackColor = false;
             // 
             // Change
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(384, 161);
-            Controls.Add(button2);
-            MaximumSize = new Size(400, 200);
-            MinimumSize = new Size(400, 200);
+            ClientSize = new Size(384, 361);
             Name = "Change";
             Text = "Изменение";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button button2;
     }
 }

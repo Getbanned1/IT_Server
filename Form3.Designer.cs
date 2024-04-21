@@ -28,37 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
+            dataAdd = new Label();
             SuspendLayout();
             // 
-            // button2
+            // dataAdd
             // 
-            button2.BackColor = Color.Silver;
-            button2.ForeColor = SystemColors.ControlDarkDark;
-            button2.Location = new Point(287, 126);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 23);
-            button2.TabIndex = 6;
-            button2.Text = "Применить";
-            button2.UseVisualStyleBackColor = false;
+            dataAdd.AutoSize = true;
+            dataAdd.ForeColor = SystemColors.ButtonHighlight;
+            dataAdd.Location = new Point(28, 11);
+            dataAdd.Name = "dataAdd";
+            dataAdd.Size = new Size(337, 15);
+            dataAdd.TabIndex = 8;
+            dataAdd.Text = "Введите данные для удаления(Имя Фамилия Отчество и тд.)";
             // 
             // Delete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(384, 161);
-            Controls.Add(button2);
-            MaximumSize = new Size(400, 200);
-            MinimumSize = new Size(400, 200);
+            ClientSize = new Size(384, 361);
+            Controls.Add(dataAdd);
             Name = "Delete";
             Text = "Удаление";
             Load += Form3_Load;
+            Controls.SetChildIndex(dataAdd, 0);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button button2;
+        private Label dataAdd;
     }
 }
