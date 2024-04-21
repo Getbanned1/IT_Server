@@ -7,8 +7,6 @@ namespace It_Server
     public partial class Form1 : Form
     {
         protected string dbFileName;
-        protected SQLiteConnection m_dbConn;
-        private string dbFileName;
         private SQLiteConnection m_dbConn;
         private SQLiteCommand m_sqlCmd;
         public Form1()
