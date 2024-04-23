@@ -22,7 +22,7 @@ namespace It_Server
             m_sqlCmd = new SQLiteCommand();
             try
             {
-                m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+                m_dbConn = new SQLiteConnection(@"Data Source=It-Server.db");
                 m_dbConn.Open();
                 m_sqlCmd.Connection = m_dbConn;
 
@@ -35,7 +35,8 @@ namespace It_Server
 
                 MessageBox.Show("Error: " + ex.Message);
             }
-
+            DbClass db = new DbClass();
+            //db.AppendDataForDB();
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn))
             {

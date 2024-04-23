@@ -13,13 +13,13 @@ namespace It_Server
     {
         
         
-        string path = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Фамилии.txt";
-        string path2 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Имена женские.txt";
-        string path3 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Имена мужские.txt";
-        string path4 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Отчества женские.txt";
-        string path5 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Отчества мужские.txt";
-        string path6 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Список оборудования.txt";
-        string path7 = @"C:\Users\79616\source\repos\It_Server\It_Server\Ресурсы\Список отделов.txt";
+        string path = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Фамилии.txt";
+        string path2 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Имена женские.txt";
+        string path3 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Имена мужские.txt";
+        string path4 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Отчества женские.txt";
+        string path5 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Отчества мужские.txt";
+        string path6 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Список оборудования.txt";
+        string path7 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Список отделов.txt";
         
 
         Random rand = new Random();
@@ -34,8 +34,9 @@ namespace It_Server
             var MPatronymic = ReadDataForDB(path5);
             var Equipment = ReadDataForDB(path6);
             var Department = ReadDataForDB(path7);
-            List<string> conditions = ["Списано", "Не Списано"];
-
+            List<string> conditions = new List<string>();
+            conditions.Add("Не Списано");
+            conditions.Add("Списано");
             Random rand = new Random();
             Random randomid = new Random();
                 try
