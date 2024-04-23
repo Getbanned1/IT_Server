@@ -13,13 +13,13 @@ namespace It_Server
     {
         
         
-        string path = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Фамилии.txt";
-        string path2 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Имена женские.txt";
-        string path3 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Имена мужские.txt";
-        string path4 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Отчества женские.txt";
-        string path5 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Отчества мужские.txt";
-        string path6 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Список оборудования.txt";
-        string path7 = @"C:\Users\Student\source\repos\Getbanned1\IT_Server\bin\Debug\net7.0-windows\Ресурсы\Список отделов.txt";
+        string path = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Фамилии.txt";
+        string path2 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Имена женские.txt";
+        string path3 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Имена мужские.txt";
+        string path4 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Отчества женские.txt";
+        string path5 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Отчества мужские.txt";
+        string path6 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Список оборудования.txt";
+        string path7 = @"C:\Users\79616\Source\Repos\Getbanned1\IT_Server\bin - Копировать\Debug\net7.0-windows\Ресурсы\Список отделов.txt";
         
 
         Random rand = new Random();
@@ -41,7 +41,7 @@ namespace It_Server
             Random randomid = new Random();
                 try
                 {
-                    using (SQLiteConnection connection = new SQLiteConnection("Data Source=It-Server.db"))
+                    using (SQLiteConnection connection = new SQLiteConnection(fullpath))
                     {
                         
                         

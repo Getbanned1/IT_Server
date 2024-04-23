@@ -9,6 +9,7 @@ namespace It_Server
         protected string dbFileName;
         private SQLiteConnection m_dbConn;
         private SQLiteCommand m_sqlCmd;
+        public string fullpath = @"Data Source="+Path.GetFullPath("It-Server.db");
         public Form1()
         {
 
@@ -22,7 +23,7 @@ namespace It_Server
             m_sqlCmd = new SQLiteCommand();
             try
             {
-                m_dbConn = new SQLiteConnection(@"Data Source=It-Server.db");
+                m_dbConn = new SQLiteConnection(fullpath);
                 m_dbConn.Open();
                 m_sqlCmd.Connection = m_dbConn;
 
@@ -35,7 +36,7 @@ namespace It_Server
 
                 MessageBox.Show("Error: " + ex.Message);
             }
-            DbClass db = new DbClass();
+            //DbClass db = new DbClass();
             //db.AppendDataForDB();
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn))
@@ -81,7 +82,7 @@ namespace It_Server
 
         private void checkBox_Stay()
         {
-            m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            m_dbConn = new SQLiteConnection(fullpath);
             m_dbConn.Open();
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn))
@@ -95,7 +96,7 @@ namespace It_Server
         private void checkBox1_Change()
         {
 
-            m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            m_dbConn = new SQLiteConnection(fullpath);
             m_dbConn.Open();
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data WHERE Condition = 'Списано'", m_dbConn))
@@ -108,7 +109,7 @@ namespace It_Server
         private void checkBox2_Change()
         {
 
-            m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            m_dbConn = new SQLiteConnection(fullpath);
             m_dbConn.Open();
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data WHERE Condition = 'Не Списано'", m_dbConn))
@@ -155,7 +156,7 @@ namespace It_Server
             {
                 try
                 {
-                    m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+                    m_dbConn = new SQLiteConnection(fullpath);
                     m_sqlCmd.Connection = m_dbConn;
                     using (DataTable dt = new DataTable())
                     {

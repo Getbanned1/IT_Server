@@ -14,6 +14,7 @@ namespace It_Server
 {
     public partial class Change : Form
     {
+        public string fullpath = @"Data Source=" + Path.GetFullPath("It-Server.db");
         public Change()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace It_Server
         }
         private void UpdateData()
         {
-            SQLiteConnection m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            SQLiteConnection m_dbConn = new SQLiteConnection(fullpath);
             SQLiteCommand m_sqlCmd = new SQLiteCommand();
             m_sqlCmd.Connection = m_dbConn;
             Random randomid = new Random();

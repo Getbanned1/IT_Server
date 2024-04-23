@@ -15,6 +15,7 @@ namespace It_Server
 {
     public partial class Delete : Form
     {
+        public string fullpath = @"Data Source=" + Path.GetFullPath("It-Server.db");
         public Delete()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace It_Server
         }
         private void DeleteData()
         {
-            SQLiteConnection m_dbConn = new SQLiteConnection("Data Source=It-Server.db");
+            SQLiteConnection m_dbConn = new SQLiteConnection(fullpath);
             SQLiteCommand m_sqlCmd = new SQLiteCommand();
             m_sqlCmd.Connection = m_dbConn;
             using (DataTable dt = new DataTable())
