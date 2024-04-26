@@ -6,15 +6,12 @@ namespace It_Server
 {
     public partial class Form1 : Form
     {
-        protected string dbFileName;
         private SQLiteConnection m_dbConn;
         private SQLiteCommand m_sqlCmd;
         public string fullpath = @"Data Source="+Path.GetFullPath("It-Server.db");
         public Form1()
         {
-
             InitializeComponent();
-
         }
         public void DbConnect()
         {
