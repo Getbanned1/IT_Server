@@ -14,10 +14,19 @@ namespace It_Server
 {
     public partial class Add : Form
     {
+        private static Add add = null;
         public string fullpath = @"Data Source=" + Path.GetFullPath("It-Server.db");
         public Add()
         {
             InitializeComponent();
+        }
+        public static Add Initialize()
+        {
+            if (add == null)
+            {
+                add = new Add();
+            }
+            return add;
         }
 
         private void button2_Click(object sender, EventArgs e)

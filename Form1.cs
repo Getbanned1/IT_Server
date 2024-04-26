@@ -33,8 +33,12 @@ namespace It_Server
 
                 MessageBox.Show("Error: " + ex.Message);
             }
-            //DbClass db = new DbClass();
-            //db.AppendDataForDB();
+            if (lbStatusText.Text == "Disconnected")
+            {
+                DbClass db = DbClass.Initialize();
+                db.AppendDataForDB();
+            }
+
             DataTable dt = new DataTable();
             using (SQLiteDataAdapter ad = new SQLiteDataAdapter("SELECT * FROM Data", m_dbConn))
             {
@@ -55,10 +59,6 @@ namespace It_Server
         {
             Delete form3 = new Delete();
             form3.Show();
-
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
